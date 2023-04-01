@@ -4,23 +4,25 @@ import logo from '../../../assets/imgs/logo.png'
 import CustomInput from '../../components/customInput'
 import CustomButton from '../../components/customButton'
 import SocialSigninButtons from '../../components/socialSignInButtons/SocialSigninButtons'
+import { useNavigation } from '@react-navigation/native'
 
 function SignInScreen() {
-  const [username, setUsername] = useState('') 
+  const [email, setEmail] = useState('') 
   const [password, setPassword] = useState('') 
 
   const {height} = useWindowDimensions()
+  const navigation = useNavigation()
 
   const onSignInPress = () => {
-    console.warn('Sign in')
+    navigation.navigate('Home');
   }
 
   const onForgotPasswordPress = () => {
-    console.warn('Forgot password')
+    navigation.navigate('ForgotPassword');
   }
 
   const onSignUp = () => {
-    console.warn('Sign up')
+    navigation.navigate('SignUp');
   }
 
   return (
@@ -28,12 +30,12 @@ function SignInScreen() {
     <View style={styles.container}>
       <Image source={logo} style={[styles.logo, {height: height*0.4}]} />
       <CustomInput 
-        placeholder={"username"} 
-        value={username}
-        setValue={setUsername}
+        placeholder={"Email"} 
+        value={email}
+        setValue={setEmail}
             />
       <CustomInput 
-      placeholder={"password"}
+      placeholder={"Mot de passe"}
       value={password}
       setValue={setPassword}
       secureTextEntry

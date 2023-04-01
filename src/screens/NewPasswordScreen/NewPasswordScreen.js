@@ -5,19 +5,16 @@ import CustomInput from '../../components/customInput'
 import CustomButton from '../../components/customButton'
 import { useNavigation } from '@react-navigation/native'
 
-function ConfirmEmailScreen() {
+function NewPasswordScreen() {
   const [code, setCode] = useState('') 
+  const [newPassord, setNewPassord] = useState('')
   
   const {height} = useWindowDimensions()
 
   const navigation = useNavigation()
 
-  const onConfirmPress = () => {
+  const onNewPasswordPress = () => {
     navigation.navigate('SignIn')
-  }
-  
-  const onResendCodePress = () => {
-    console.warn('Resend code')
   }
 
   const OnSigninPress = () => {
@@ -29,27 +26,27 @@ function ConfirmEmailScreen() {
     <View style={styles.container}>
       <Image source={logo} style={[styles.logo, {height: height*0.3}]} />
       <Text style={styles.title}>
-        Confirmer votre adresse email
+        Nouveau mot de passe
       </Text>
       <CustomInput
-        placeholder={"Code de confirmation"}
+        placeholder={"Code"}
         value={code}
         setValue={setCode}
         
       />
+      <CustomInput
+        placeholder={"Votre nouveau mot de passe"}
+        value={newPassord}
+        setValue={setNewPassord}
+        
+      />
       <CustomButton 
-      text={'Confirmer'} 
-      onPress={onConfirmPress}
+      text={'Réinitialiser'} 
+      onPress={onNewPasswordPress}
       type={'PRIMARY'}
       bgColor={'#FF914D'}
       />
-      <CustomButton 
-      text={'Renvoyer le code'} 
-      onPress={onResendCodePress}
-      type={'SECONDARY'}
-      fgColor={'#FF914D'}
-      bdColor={'#FF914D'}
-      />
+      
       <CustomButton 
       text={'Retour à la connexion'} 
       onPress={OnSigninPress}
@@ -88,4 +85,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default ConfirmEmailScreen
+export default NewPasswordScreen

@@ -4,6 +4,7 @@ import logo from '../../../assets/imgs/logo.png'
 import CustomInput from '../../components/customInput'
 import CustomButton from '../../components/customButton'
 import SocialSigninButtons from '../../components/socialSignInButtons/SocialSigninButtons'
+import { useNavigation } from '@react-navigation/native'
 
 function SignUpScreen() {
   const [username, setUsername] = useState('') 
@@ -13,8 +14,10 @@ function SignUpScreen() {
 
   const {height} = useWindowDimensions()
 
+  const navigation = useNavigation()
+
   const onRegisterPressed = () => {
-    console.warn('Sign up')
+    navigation.navigate('ConfirmEmail')
   }
 
   const onTermsOfUsePressed = () => {
@@ -26,7 +29,7 @@ function SignUpScreen() {
   }
 
   const onSignInPress = () => {
-    console.warn('Sign in')
+    navigation.navigate('SignIn')
   }
 
   return (

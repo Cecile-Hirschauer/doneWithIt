@@ -3,21 +3,24 @@ import React, {useState} from 'react'
 import logo from '../../../assets/imgs/logo.png'
 import CustomInput from '../../components/customInput'
 import CustomButton from '../../components/customButton'
+import { useNavigation } from '@react-navigation/native'
 
 function ForgotPasswordScreen() {
-  const [code, setCode] = useState('') 
-  const [newPassord, setNewPassord] = useState('')
+  const [username, setUsername] = useState('') 
   
   const {height} = useWindowDimensions()
 
-  const onReinitializePasswordPress = () => {
-    console.warn('Reinitialize password')
+  const navigation = useNavigation()
+
+  const onSendPress = () => {
+    navigation.navigate('NewPassword')
   }
 
   const OnSigninPress = () => {
-    console.warn('Sign in')
+    navigation.navigate('SignIn')
   }
 
+ 
   return (
     <ScrollView showsHorizontalScrollIndicator={false}>
     <View style={styles.container}>
@@ -26,31 +29,26 @@ function ForgotPasswordScreen() {
         Réinitialiser votre mot de passe
       </Text>
       <CustomInput
-        placeholder={"Code"}
-        value={code}
-        setValue={setCode}
+        placeholder={"Votre nom d'utilisateur"}
+        value={username}
+        setValue={setUsername}
         
       />
-      <CustomInput
-        placeholder={"Votre nouveau mot de passe"}
-        value={newPassord}
-        setValue={setNewPassord}
-        
-      />
+      
       <CustomButton 
-      text={'Réinitialiser'} 
-      onPress={onReinitializePasswordPress}
+      text={'Envoyer'} 
+      onPress={onSendPress}
       type={'PRIMARY'}
       bgColor={'#FF914D'}
       />
-      
       <CustomButton 
       text={'Retour à la connexion'} 
       onPress={OnSigninPress}
       type={'TERCIARY'}
       fgColor={'gray'}
       />  
-    </View>
+      
+         </View>
     </ScrollView>
   )
 }
