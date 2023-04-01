@@ -13,16 +13,20 @@ function SignUpScreen() {
 
   const {height} = useWindowDimensions()
 
-  onRegisterPressed = () => {
+  const onRegisterPressed = () => {
     console.warn('Sign up')
   }
 
-  onTermsOfUsePressed = () => {
+  const onTermsOfUsePressed = () => {
     console.warn('Terms of use')
   }
 
-  onPrivacyPressed = () => {
+  const onPrivacyPressed = () => {
     console.warn('Privacy')
+  }
+
+  const onSignInPress = () => {
+    console.warn('Sign in')
   }
 
   return (
@@ -65,6 +69,10 @@ function SignUpScreen() {
       type={'PRIMARY'}
       />
       <SocialSigninButtons />
+      <CustomButton 
+      text={'Vous avez déjà un compte? Se connecter'} 
+      onPress={onSignInPress}
+      />
     
     </View>
     </ScrollView>
@@ -89,7 +97,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'gray',
-    marginHorizontal: 20,
+    marginHorizontal: 10,
   },
   link: {
     color: '#f14688',
